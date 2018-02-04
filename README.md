@@ -3,7 +3,7 @@
 </p>
 
 
-# MQTTnet
+# RaspberrySharp
 
 RaspberryShap is a high performance .NET library for Raspberry Pi boards. Based on former Raspberry-Sharp (R.I.P.), it has been completely refactored. 
 It provides all IO bus availbables on Pis, included Compute Model 3 and GPIO over 31. 
