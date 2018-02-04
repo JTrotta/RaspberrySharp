@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/JTrotta/RaspberrySharp/blob/master/Images/Icon.png?raw=true" width="128">
+<img src="https://github.com/JTrotta/RaspberrySharp/tree/master/RaspberrySharp/Images/Icon.png?raw=true" width="128">
 </p>
 
 
