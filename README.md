@@ -5,15 +5,17 @@
 
 # RaspberrySharp
 
-RaspberryShap is a high performance .NET library for Raspberry Pi boards. Based on former Raspberry-Sharp (R.I.P.), it has been completely refactored. 
-It provides all IO bus availbables on Pis, included Compute Model 3 and GPIO over 31. 
+RaspberrySharp is a high performance .NET library for Raspberry Pi boards. Based on former Raspberry-Sharp (R.I.P.), it has been completely refactored. 
+It provides all IO bus availables on Pis, included Compute Model 3 and GPIO over 31. 
 The implementation is based on the work by Eric Bezine <http://www.raspberry-sharp.org/author/eric-bezine/>.
 
 ## Features
 * GPIO from 1 to 45 (CM3 has 45 GPIOs)
+* GPIO removed confusion between Connector Pin and GPIO Pin numbers, only GPIO numbers
 * I2C bus			      (included repeated start )
 * SPI				        (beta)
-* no dependacy, just one library
+* OneWire           (coming soon)
+* no dependencies, just one library
 
 ## Supported frameworks
 
@@ -24,9 +26,7 @@ The implementation is based on the work by Eric Bezine <http://www.raspberry-sha
 ## Supported Raspberry Pi versions
 
 * Raspberry Pi 1 model A
-* Raspberry Pi 1 model A+
 * Raspberry Pi 1 model B  
-* Raspberry Pi 1 model B+ 
 * Raspberry Pi 2 model B
 * Raspberry Pi 3 model B
 * Raspberry Pi Zero
