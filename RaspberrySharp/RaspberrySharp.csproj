@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>JTtotta</Authors>
+    <Company>ENET</Company>
+    <Description>A .NET/Mono IO Library for Raspberry Pi
+This library is a complete refactoring of Rasperry-Sharp libraries, merged into one library, complete and updated to RB3 and CM3.</Description>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaspberrySharp", "RaspberrySharp\RaspberrySharp.csproj", "{53955279-F0FD-4221-81B7-A201454CA4FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{E9A357D3-F143-4E24-89BC-D44658E0F460}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{86D6BD01-F048-4DA5-901A-79A51E5AB13D}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{ECEE2A07-4719-4EE0-883D-F4850E2EA067}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{40537F26-43CC-445E-AB80-87C465CF7ED2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53955279-F0FD-4221-81B7-A201454CA4FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53955279-F0FD-4221-81B7-A201454CA4FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53955279-F0FD-4221-81B7-A201454CA4FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53955279-F0FD-4221-81B7-A201454CA4FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{53955279-F0FD-4221-81B7-A201454CA4FF} = {40537F26-43CC-445E-AB80-87C465CF7ED2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {16398D2F-864E-4257-A25A-705BE16EC1A8}
+	EndGlobalSection
+EndGlobal
