@@ -39,6 +39,15 @@ namespace RaspberrySharp.System.Timers
                 Thread.Sleep(time);
         }
 
+        /// <summary>
+        /// Sleeps during the specified time.
+        /// </summary>
+        /// <param name="milliSeconds">the milliseconds</param>
+        public static void Sleep(int milliSeconds)
+        {
+            Sleep(TimeSpan.FromMilliseconds(milliSeconds));
+        }
+
         #endregion
     }
 }

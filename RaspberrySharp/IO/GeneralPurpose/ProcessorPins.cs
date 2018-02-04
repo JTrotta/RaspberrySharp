@@ -184,7 +184,7 @@ namespace RaspberrySharp.IO.GeneralPurpose
         /// <summary>
         /// Pin 33 selected.
         /// </summary>
-        Pin33 = (ulong)1 << 32,
+        Pin33 = (ulong)1 << 33,
 
         /// <summary>
         /// Pin 34 selected.
@@ -194,6 +194,56 @@ namespace RaspberrySharp.IO.GeneralPurpose
         /// <summary>
         /// Pin 35 selected.
         /// </summary>
-        Pin35 = (ulong)1 << 35
+        Pin35 = (ulong)1 << 35,
+
+        /// <summary>
+        /// Pin 36 selected.
+        /// </summary>
+        Pin36 = (ulong)1 << 36,
+
+        /// <summary>
+        /// Pin 37 selected.
+        /// </summary>
+        Pin37 = (ulong)1 << 37,
+
+        /// <summary>
+        /// Pin 38 selected.
+        /// </summary>
+        Pin38 = (ulong)1 << 38,
+
+        /// <summary>
+        /// Pin 39 selected.
+        /// </summary>
+        Pin39 = (ulong)1 << 39,
+
+        /// <summary>
+        /// Pin 40 selected.
+        /// </summary>
+        Pin40 = (ulong)1 << 40,
+
+        /// <summary>
+        /// Pin 41 selected.
+        /// </summary>
+        Pin41 = (ulong)1 << 41,
+
+        /// <summary>
+        /// Pin 42 selected.
+        /// </summary>
+        Pin42 = (ulong)1 << 42,
+
+        /// <summary>
+        /// Pin 43 selected.
+        /// </summary>
+        Pin43 = (ulong)1 << 43,
+
+        /// <summary>
+        /// Pin 44 selected.
+        /// </summary>
+        Pin44 = (ulong)1 << 44,
+
+        /// <summary>
+        /// Pin 45 selected.
+        /// </summary>
+        Pin45 = (ulong)1 << 45,
     }
 }

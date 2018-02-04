@@ -115,8 +115,7 @@ namespace RaspberrySharp.IO.GeneralPurpose
 
             if (direction == PinDirection.Input)
             {
-                PinResistor pinResistor;
-                if (!pinResistors.TryGetValue(pin, out pinResistor) || pinResistor != PinResistor.None)
+                if (!pinResistors.TryGetValue(pin, out PinResistor pinResistor) || pinResistor != PinResistor.None)
                     SetPinResistor(pin, PinResistor.None);
 
                 SetPinDetectedEdges(pin, PinDetectedEdges.Both);
@@ -242,9 +241,8 @@ namespace RaspberrySharp.IO.GeneralPurpose
         /// <param name="value">The pin status.</param>
         public void Write(ProcessorPin pin, bool value)
         {
-            int shift;
             //var offset = Math.DivRem((int)pin, 32, out shift);
-            var offset = Math.DivRem((int)pin, 64, out shift); // to use gpio >= 32 
+            var offset = Math.DivRem((int)pin, 64, out int shift); // to use gpio >= 32 
 
             var pinGroupAddress = gpioAddress + (int)((value ? OP.BCM2835_GPSET0 : OP.BCM2835_GPCLR0) + offset);
             SafeWriteUInt64(pinGroupAddress, (UInt64)1 << shift);
@@ -259,9 +257,8 @@ namespace RaspberrySharp.IO.GeneralPurpose
         /// </returns>
         public bool Read(ProcessorPin pin)
         {
-            int shift;
             //var offset = Math.DivRem((int)pin, 32, out shift);
-            var offset = Math.DivRem((int)pin, 64, out shift);// to use gpio >= 32 
+            var offset = Math.DivRem((int)pin, 64, out int shift);// to use gpio >= 32 
 
             var pinGroupAddress = gpioAddress + (int)(OP.BCM2835_GPLEV0 + offset);
             var value = SafeReadUInt64(pinGroupAddress);
@@ -319,13 +316,13 @@ namespace RaspberrySharp.IO.GeneralPurpose
         {
             lock (pinPolls)
             {
-                PinPoll poll;
-                if (pinPolls.TryGetValue(pin, out poll))
+                if (pinPolls.TryGetValue(pin, out PinPoll poll))
                     return;
 
-                var pinPoll = new PinPoll();
-
-                pinPoll.PollDescriptor = OP.epoll_create(1);
+                var pinPoll = new PinPoll
+                {
+                    PollDescriptor = OP.epoll_create(1)
+                };
                 if (pinPoll.PollDescriptor < 0)
                     throw new IOException("Call to epoll_create(1) API failed with the following return value: " + pinPoll.PollDescriptor);
 
@@ -353,8 +350,7 @@ namespace RaspberrySharp.IO.GeneralPurpose
 
         private void UninitializePoll(ProcessorPin pin)
         {
-            PinPoll poll;
-            if (pinPolls.TryGetValue(pin, out poll))
+            if (pinPolls.TryGetValue(pin, out PinPoll poll))
             {
                 pinPolls.Remove(pin);
 
@@ -390,9 +386,8 @@ namespace RaspberrySharp.IO.GeneralPurpose
 
         private void SetPinResistorClock(ProcessorPin pin, bool on)
         {
-            int shift;
             //var offset = Math.DivRem((int)pin, 32, out shift);
-            var offset = Math.DivRem((int)pin, 64, out shift);// to use gpio >= 32 
+            var offset = Math.DivRem((int)pin, 64, out int shift);// to use gpio >= 32 
 
             var clockAddress = gpioAddress + (int)(OP.BCM2835_GPPUDCLK0 + offset);
             SafeWriteUInt64(clockAddress, (ulong)(on ? 1 : 0) << shift);

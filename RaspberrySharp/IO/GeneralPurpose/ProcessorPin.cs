@@ -1,288 +1,288 @@
 ﻿namespace RaspberrySharp.IO.GeneralPurpose
 {
     /// <summary>
-    /// Represents a processor pin.
+    /// Represents a processor Gpio.
     /// </summary>
     public enum ProcessorPin
     {
         /// <summary>
-        /// Pin 0.
+        /// Gpio 0.
         /// </summary>
-        Pin0 = 0,
+        Gpio0 = 0,
 
         /// <summary>
-        /// Pin 0.
+        /// Gpio 0.
         /// </summary>
-        Pin00 = Pin0,
+        Gpio00 = Gpio0,
 
         /// <summary>
-        /// Pin 1.
+        /// Gpio 1.
         /// </summary>
-        Pin1 = 1,
+        Gpio1 = 1,
 
         /// <summary>
-        /// Pin 1.
+        /// Gpio 1.
         /// </summary>
-        Pin01 = Pin1,
+        Gpio01 = Gpio1,
 
         /// <summary>
-        /// Pin 2.
+        /// Gpio 2.
         /// </summary>
-        Pin2 = 2,
+        Gpio2 = 2,
 
         /// <summary>
-        /// Pin 2.
+        /// Gpio 2.
         /// </summary>
-        Pin02 = Pin2,
+        Gpio02 = Gpio2,
 
         /// <summary>
-        /// Pin 3.
+        /// Gpio 3.
         /// </summary>
-        Pin3 = 3,
+        Gpio3 = 3,
 
         /// <summary>
-        /// Pin 3.
+        /// Gpio 3.
         /// </summary>
-        Pin03 = Pin3,
+        Gpio03 = Gpio3,
 
         /// <summary>
-        /// Pin 4.
+        /// Gpio 4.
         /// </summary>
-        Pin4 = 4,
+        Gpio4 = 4,
 
         /// <summary>
-        /// Pin 4.
+        /// Gpio 4.
         /// </summary>
-        Pin04 = Pin4,
+        Gpio04 = Gpio4,
 
         /// <summary>
-        /// Pin 5.
+        /// Gpio 5.
         /// </summary>
-        Pin5 = 5,
+        Gpio5 = 5,
 
         /// <summary>
-        /// Pin 5.
+        /// Gpio 5.
         /// </summary>
-        Pin05 = Pin5,
+        Gpio05 = Gpio5,
 
         /// <summary>
-        /// Pin 6.
+        /// Gpio 6.
         /// </summary>
-        Pin6 = 6,
+        Gpio6 = 6,
 
         /// <summary>
-        /// Pin 6.
+        /// Gpio 6.
         /// </summary>
-        Pin06 = Pin6,
+        Gpio06 = Gpio6,
 
         /// <summary>
-        /// Pin 7.
+        /// Gpio 7.
         /// </summary>
-        Pin7 = 7,
+        Gpio7 = 7,
 
         /// <summary>
-        /// Pin 7.
+        /// Gpio 7.
         /// </summary>
-        Pin07 = Pin7,
+        Gpio07 = Gpio7,
 
         /// <summary>
-        /// Pin 8.
+        /// Gpio 8.
         /// </summary>
-        Pin8 = 8,
+        Gpio8 = 8,
 
         /// <summary>
-        /// Pin 8.
+        /// Gpio 8.
         /// </summary>
-        Pin08 = Pin8,
+        Gpio08 = Gpio8,
 
         /// <summary>
-        /// Pin 9.
+        /// Gpio 9.
         /// </summary>
-        Pin9 = 9,
+        Gpio9 = 9,
 
         /// <summary>
-        /// Pin 9.
+        /// Gpio 9.
         /// </summary>
-        Pin09 = Pin9,
+        Gpio09 = Gpio9,
 
         /// <summary>
-        /// Pin 10.
+        /// Gpio 10.
         /// </summary>
-        Pin10 = 10,
+        Gpio10 = 10,
 
         /// <summary>
-        /// Pin 11.
+        /// Gpio 11.
         /// </summary>
-        Pin11 = 11,
+        Gpio11 = 11,
 
         /// <summary>
-        /// Pin 12.
+        /// Gpio 12.
         /// </summary>
-        Pin12 = 12,
+        Gpio12 = 12,
 
         /// <summary>
-        /// Pin 13.
+        /// Gpio 13.
         /// </summary>
-        Pin13 = 13,
+        Gpio13 = 13,
 
         /// <summary>
-        /// Pin 14.
+        /// Gpio 14.
         /// </summary>
-        Pin14 = 14,
+        Gpio14 = 14,
 
         /// <summary>
-        /// Pin 15.
+        /// Gpio 15.
         /// </summary>
-        Pin15 = 15,
+        Gpio15 = 15,
 
         /// <summary>
-        /// Pin 16.
+        /// Gpio 16.
         /// </summary>
-        Pin16 = 16,
+        Gpio16 = 16,
 
         /// <summary>
-        /// Pin 17.
+        /// Gpio 17.
         /// </summary>
-        Pin17 = 17,
+        Gpio17 = 17,
 
         /// <summary>
-        /// Pin 18.
+        /// Gpio 18.
         /// </summary>
-        Pin18 = 18,
+        Gpio18 = 18,
 
         /// <summary>
-        /// Pin 19.
+        /// Gpio 19.
         /// </summary>
-        Pin19 = 19,
+        Gpio19 = 19,
 
         /// <summary>
-        /// Pin 20.
+        /// Gpio 20.
         /// </summary>
-        Pin20 = 20,
+        Gpio20 = 20,
 
         /// <summary>
-        /// Pin 21.
+        /// Gpio 21.
         /// </summary>
-        Pin21 = 21,
+        Gpio21 = 21,
 
         /// <summary>
-        /// Pin 22.
+        /// Gpio 22.
         /// </summary>
-        Pin22 = 22,
+        Gpio22 = 22,
 
         /// <summary>
-        /// Pin 23.
+        /// Gpio 23.
         /// </summary>
-        Pin23 = 23,
+        Gpio23 = 23,
 
         /// <summary>
-        /// Pin 24.
+        /// Gpio 24.
         /// </summary>
-        Pin24 = 24,
+        Gpio24 = 24,
 
         /// <summary>
-        /// Pin 25.
+        /// Gpio 25.
         /// </summary>
-        Pin25 = 25,
+        Gpio25 = 25,
 
         /// <summary>
-        /// Pin 26.
+        /// Gpio 26.
         /// </summary>
-        Pin26 = 26,
+        Gpio26 = 26,
 
         /// <summary>
-        /// Pin 27.
+        /// Gpio 27.
         /// </summary>
-        Pin27 = 27,
+        Gpio27 = 27,
 
         /// <summary>
-        /// Pin 28.
+        /// Gpio 28.
         /// </summary>
-        Pin28 = 28,
+        Gpio28 = 28,
 
         /// <summary>
-        /// Pin 29.
+        /// Gpio 29.
         /// </summary>
-        Pin29 = 29,
+        Gpio29 = 29,
 
         /// <summary>
-        /// Pin 30.
+        /// Gpio 30.
         /// </summary>
-        Pin30 = 30,
+        Gpio30 = 30,
 
         /// <summary>
-        /// Pin 31.
+        /// Gpio 31.
         /// </summary>
-        Pin31 = 31,
+        Gpio31 = 31,
 
         /// <summary>
-        /// Pin 32. (added for CubieTruck/CubieBoard3 compatibility)
+        /// Gpio 32. (added for CubieTruck/CubieBoard3 compatibility)
         /// </summary>
-        Pin32 = 32,
+        Gpio32 = 32,
 
         /// <summary>
-        /// Pin 33. (added for CM3 compatibility)
+        /// Gpio 33. (added for CM3 compatibility)
         /// </summary>
-        Pin33 = 33,
+        Gpio33 = 33,
 
         /// <summary>
-        /// Pin 34. (added for CM3 compatibility)
+        /// Gpio 34. (added for CM3 compatibility)
         /// </summary>
-        Pin34 = 34,
+        Gpio34 = 34,
 
         /// <summary>
-        /// Pin 35. (added for CM3 compatibility)
+        /// Gpio 35. (added for CM3 compatibility)
         /// </summary>
-        Pin35 = 35,
+        Gpio35 = 35,
 
         /// <summary>
-        /// Pin 36. (added for CM3 compatibility)
+        /// Gpio 36. (added for CM3 compatibility)
         /// </summary>
-        Pin36 = 36,
+        Gpio36 = 36,
 
         /// <summary>
-        /// Pin 37. (added for CM3 compatibility)
+        /// Gpio 37. (added for CM3 compatibility)
         /// </summary>
-        Pin37 = 37,
+        Gpio37 = 37,
 
         /// <summary>
-        /// Pin 38. (added for CM3 compatibility)
+        /// Gpio 38. (added for CM3 compatibility)
         /// </summary>
-        Pin38 = 38,
+        Gpio38 = 38,
 
         /// <summary>
-        /// Pin 39. (added for CM3 compatibility)
+        /// Gpio 39. (added for CM3 compatibility)
         /// </summary>
-        Pin39 = 39,
+        Gpio39 = 39,
 
         /// <summary>
-        /// Pin 40. (added for CM3 compatibility)
+        /// Gpio 40. (added for CM3 compatibility)
         /// </summary>
-        Pin40 = 40,
+        Gpio40 = 40,
 
         /// <summary>
-        /// Pin 41. (added for CM3 compatibility)
+        /// Gpio 41. (added for CM3 compatibility)
         /// </summary>
-        Pin41 = 41,
+        Gpio41 = 41,
 
         /// <summary>
-        /// Pin 42. (added for CM3 compatibility)
+        /// Gpio 42. (added for CM3 compatibility)
         /// </summary>
-        Pin42 = 42,
+        Gpio42 = 42,
 
         /// <summary>
-        /// Pin 43. (added for CM3 compatibility)
+        /// Gpio 43. (added for CM3 compatibility)
         /// </summary>
-        Pin43 = 43,
+        Gpio43 = 43,
 
         /// <summary>
-        /// Pin 44. (added for CM3 compatibility)
+        /// Gpio 44. (added for CM3 compatibility)
         /// </summary>
-        Pin44 = 44,
+        Gpio44 = 44,
 
         /// <summary>
-        /// Pin 45. (added for CM3 compatibility)
+        /// Gpio 45. (added for CM3 compatibility)
         /// </summary>
-        Pin45 = 45,
+        Gpio45 = 45,
     }
 }

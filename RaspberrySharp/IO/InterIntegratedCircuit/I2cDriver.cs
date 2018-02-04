@@ -517,19 +517,19 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
             switch (GpioConnectionSettings.ConnectorPinout)
             {
                 case ConnectorPinout.Rev1:
-                    if (sdaPin == ProcessorPin.Pin0 && sclPin == ProcessorPin.Pin1)
+                    if (sdaPin == ProcessorPin.Gpio0 && sclPin == ProcessorPin.Gpio1)
                         return OP.BCM2835_BSC0_BASE;
                     throw new InvalidOperationException("No I2C device exist on the specified pins");
 
                 case ConnectorPinout.Rev2:
-                    if (sdaPin == ProcessorPin.Pin28 && sclPin == ProcessorPin.Pin29)
+                    if (sdaPin == ProcessorPin.Gpio28 && sclPin == ProcessorPin.Gpio29)
                         return OP.BCM2835_BSC0_BASE;
-                    if (sdaPin == ProcessorPin.Pin2 && sclPin == ProcessorPin.Pin3)
+                    if (sdaPin == ProcessorPin.Gpio2 && sclPin == ProcessorPin.Gpio3)
                         return OP.BCM2835_BSC1_BASE;
                     throw new InvalidOperationException("No I2C device exist on the specified pins");
 
                 case ConnectorPinout.Plus:
-                    if (sdaPin == ProcessorPin.Pin2 && sclPin == ProcessorPin.Pin3)
+                    if (sdaPin == ProcessorPin.Gpio2 && sclPin == ProcessorPin.Gpio3)
                         return GetProcessorBscAddress(Board.Current.Processor);
                     throw new InvalidOperationException("No I2C device exist on the specified pins");
 

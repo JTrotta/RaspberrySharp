@@ -13,6 +13,10 @@ This library is a complete refactoring of Rasperry-Sharp libraries, merged into 
     <Copyright>ENET 2018</Copyright>
     <PackageTags>Raspberry GPIO I2C SPI IOT MONO RB1 RB2 RB3 CM1 CM3</PackageTags>
     <Version>1.0.0-beta</Version>
+    <NeutralLanguage></NeutralLanguage>
+    <PackageIconUrl>https://github.com/JTrotta/RaspberrySharp/blob/master/RaspberrySharp/Images/Icon.png?raw=true</PackageIconUrl>
+    <RepositoryUrl>https://github.com/JTrotta/RaspberrySharp</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/JTrotta/RaspberrySharp</PackageProjectUrl>
   </PropertyGroup>
 
 </Project>
