@@ -12,10 +12,10 @@ The implementation is based on the work by Eric Bezine <http://www.raspberry-sha
 ## Features
 * GPIO from 1 to 45 (CM3 has 45 GPIOs)
 * GPIO removed confusion between Connector Pin and GPIO Pin numbers, only GPIO numbers
-* I2C bus			      (included repeated start )
-* SPI				        (beta)
-* OneWire           (coming soon)
-* no dependencies, just one library
+* I2C bus			      (included repeated start as protocol request)
+* SPI				      (beta)
+* OneWire          
+* No dependencies, just one library
 
 ## Supported frameworks
 

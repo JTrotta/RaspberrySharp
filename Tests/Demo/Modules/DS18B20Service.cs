@@ -34,7 +34,6 @@ namespace Demo.Modules
         }
         #endregion
 
-
         #region Methods
         public Temperature GetTemperature()
         {

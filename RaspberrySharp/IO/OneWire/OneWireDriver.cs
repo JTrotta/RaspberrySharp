@@ -20,7 +20,7 @@ namespace RaspberrySharp.IO.OneWire
         public string DeviceFile { get { return _deviceFolder + @"/w1_slave"; } }
 
         /// <summary>
-        /// Abstract class to be inheroted by all OneWire Sensors
+        /// Abstract class to be inherited by all OneWire Sensors
         /// </summary>
         /// <param name="onewireId">Sensor Id (i.e. DS18B20 = 28)</param>
         /// <param name="deviceIndex">OneWire may connect multiple sensor with same Id, each one has index: 0,1 etc.</param>

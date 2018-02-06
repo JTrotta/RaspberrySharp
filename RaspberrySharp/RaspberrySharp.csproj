@@ -7,12 +7,13 @@
     <Authors>JTtotta</Authors>
     <Company>ENET</Company>
     <Description>A .NET/Mono IO Library for Raspberry Pi
-This library is a complete refactoring of Rasperry-Sharp libraries, merged into one library, complete and updated to RB3 and CM3.</Description>
-    <PackageReleaseNotes>This is a complete Beta Version</PackageReleaseNotes>
+This library is a complete refactoring of Raspberry-Sharp libraries, merged into one library and updated to RB3 and CM3.</Description>
+    <PackageReleaseNotes>This is a complete Beta Version.
+* [IO] Added Onewire driver.</PackageReleaseNotes>
     <PackageLicenseUrl>https://github.com/JTrotta/RaspberrySharp/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>ENET 2018</Copyright>
     <PackageTags>Raspberry GPIO I2C SPI IOT MONO RB1 RB2 RB3 CM1 CM3</PackageTags>
-    <Version>1.0.0-beta</Version>
+    <Version>1.1.0-beta</Version>
     <NeutralLanguage></NeutralLanguage>
     <PackageIconUrl>https://github.com/JTrotta/RaspberrySharp/blob/master/RaspberrySharp/Images/Icon.png?raw=true</PackageIconUrl>
     <RepositoryUrl>https://github.com/JTrotta/RaspberrySharp</RepositoryUrl>

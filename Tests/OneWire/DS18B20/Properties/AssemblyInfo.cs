@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Demo")]
-[assembly: AssemblyDescription("RasperrySharp Winform Demo")]
+[assembly: AssemblyTitle("DS18B20")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ENET")]
-[assembly: AssemblyProduct("Demo")]
-[assembly: AssemblyCopyright("Copyright Euronet ©  2018")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("DS18B20")]
+[assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("866bbbac-679c-4b64-ab88-3aab322ac9ae")]
+[assembly: Guid("a96802d7-053f-44f0-b5d3-a902acd0be8b")]
 
 // Version information for an assembly consists of the following four values:
 //

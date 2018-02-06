@@ -241,11 +241,20 @@ namespace RaspberrySharp.IO.GeneralPurpose
         /// <param name="value">The pin status.</param>
         public void Write(ProcessorPin pin, bool value)
         {
-            //var offset = Math.DivRem((int)pin, 32, out shift);
-            var offset = Math.DivRem((int)pin, 64, out int shift); // to use gpio >= 32 
+            int shift, offset;
+            IntPtr pinGroupAddress;
+            if ((int)pin < 32)
+            {
+                offset = Math.DivRem((int)pin, 32, out shift);
+                pinGroupAddress = gpioAddress + (int)((value ? OP.BCM2835_GPSET0 : OP.BCM2835_GPCLR0) + offset);
+            }
+            else
+            {
+                offset = Math.DivRem((int)pin - 32, 32, out shift); // to use gpio >= 32 
+                pinGroupAddress = gpioAddress + (int)((value ? OP.BCM2835_GPSET1 : OP.BCM2835_GPCLR1) + offset);
+            }
 
-            var pinGroupAddress = gpioAddress + (int)((value ? OP.BCM2835_GPSET0 : OP.BCM2835_GPCLR0) + offset);
-            SafeWriteUInt64(pinGroupAddress, (UInt64)1 << shift);
+            SafeWriteUInt32(pinGroupAddress, (uint)1 << shift);
         }
 
         /// <summary>
@@ -257,13 +266,21 @@ namespace RaspberrySharp.IO.GeneralPurpose
         /// </returns>
         public bool Read(ProcessorPin pin)
         {
-            //var offset = Math.DivRem((int)pin, 32, out shift);
-            var offset = Math.DivRem((int)pin, 64, out int shift);// to use gpio >= 32 
+            int shift, offset;
+            IntPtr pinGroupAddress;
+            if ((int)pin < 32)
+            {
+                offset = Math.DivRem((int)pin, 32, out shift);
+                pinGroupAddress = gpioAddress + (int)(OP.BCM2835_GPLEV0 + offset);
+            }
+            else
+            {
+                offset = Math.DivRem((int)pin - 32, 32, out shift);
+                pinGroupAddress = gpioAddress + (int)(OP.BCM2835_GPLEV1 + offset);
+            }
+            var value = SafeReadUInt32(pinGroupAddress);
 
-            var pinGroupAddress = gpioAddress + (int)(OP.BCM2835_GPLEV0 + offset);
-            var value = SafeReadUInt64(pinGroupAddress);
-
-            return (value & ((UInt64)1 << shift)) != 0;
+            return (value & ((uint)1 << shift)) != 0;
         }
 
         /// <summary>
@@ -275,8 +292,9 @@ namespace RaspberrySharp.IO.GeneralPurpose
         /// </returns>
         public ProcessorPins Read(ProcessorPins pins)
         {
-            var pinGroupAddress = gpioAddress + (int)(OP.BCM2835_GPLEV0 + (uint)0 * 4);
-            var value = SafeReadUInt64(pinGroupAddress);
+            //var pinGroupAddress = gpioAddress + (int)(Interop.BCM2835_GPLEV0 + (uint)0 * 4);
+            var pinGroupAddress = gpioAddress + (int)(OP.BCM2835_GPLEV0);
+            var value = SafeReadUInt32(pinGroupAddress);
 
             return (ProcessorPins)((uint)pins & value);
         }
@@ -293,7 +311,7 @@ namespace RaspberrySharp.IO.GeneralPurpose
                     return OP.BCM2835_GPIO_BASE;
 
                 case Processor.Bcm2709:
-                case Processor.Bcm2835: // <- added this one JJ FIX per RB3
+                case Processor.Bcm2835: 
                     return OP.BCM2836_GPIO_BASE;
 
                 default:
@@ -386,17 +404,26 @@ namespace RaspberrySharp.IO.GeneralPurpose
 
         private void SetPinResistorClock(ProcessorPin pin, bool on)
         {
-            //var offset = Math.DivRem((int)pin, 32, out shift);
-            var offset = Math.DivRem((int)pin, 64, out int shift);// to use gpio >= 32 
+            int shift, offset;
+            IntPtr clockAddress;
+            if ((int)pin < 32)
+            {
+                offset = Math.DivRem((int)pin, 32, out shift);
+                clockAddress = gpioAddress + (int)(OP.BCM2835_GPPUDCLK0 + offset);
+            }
+            else
+            {
+                offset = Math.DivRem((int)pin - 32, 32, out shift);
+                clockAddress = gpioAddress + (int)(OP.BCM2835_GPPUDCLK1 + offset);
+            }
 
-            var clockAddress = gpioAddress + (int)(OP.BCM2835_GPPUDCLK0 + offset);
-            SafeWriteUInt64(clockAddress, (ulong)(on ? 1 : 0) << shift);
+            SafeWriteUInt32(clockAddress, (uint)(on ? 1 : 0) << shift);
         }
 
         private void WriteResistor(uint resistor)
         {
             var resistorPin = gpioAddress + (int)OP.BCM2835_GPPUD;
-            SafeWriteUInt64(resistorPin, resistor);
+            SafeWriteUInt32(resistorPin, resistor);
         }
 
         private void SetPinMode(ProcessorPin pin, uint mode)
@@ -413,43 +440,42 @@ namespace RaspberrySharp.IO.GeneralPurpose
 
         private static void WriteUInt32Mask(IntPtr address, uint value, uint mask)
         {
-            var v = SafeReadUInt64(address);
+            var v = SafeReadUInt32(address);
             v = (v & ~mask) | (value & mask);
-            SafeWriteUInt64(address, v);
+            SafeWriteUInt32(address, v);
         }
 
-        private static UInt64 SafeReadUInt64(IntPtr address)
+        private static uint SafeReadUInt32(IntPtr address)
         {
             // Make sure we dont return the _last_ read which might get lost
             // if subsequent code changes to a different peripheral
-            var ret = ReadUInt64(address);
-            ReadUInt64(address);
+            var ret = ReadUInt32(address);
+            ReadUInt32(address);
 
             return ret;
         }
 
-        private static UInt64 ReadUInt64(IntPtr address)
+        private static uint ReadUInt32(IntPtr address)
         {
             unchecked
             {
-                return (UInt64)Marshal.ReadInt64(address);
+                return (uint)Marshal.ReadInt32(address);
             }
         }
 
-        private static void SafeWriteUInt64(IntPtr address, UInt64 value)
+        private static void SafeWriteUInt32(IntPtr address, uint value)
         {
             // Make sure we don't rely on the first write, which may get
             // lost if the previous access was to a different peripheral.
-            WriteUInt64(address, value);
-            WriteUInt64(address, value);
+            WriteUInt32(address, value);
+            WriteUInt32(address, value);
         }
 
-        private static void WriteUInt64(IntPtr address, UInt64 value)
+        private static void WriteUInt32(IntPtr address, uint value)
         {
             unchecked
             {
-                //Marshal.WriteInt32(address, (int)value);
-                Marshal.WriteInt64(address, (long)value);
+                Marshal.WriteInt32(address, (int)value);
             }
         }
 

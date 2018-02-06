@@ -50,9 +50,13 @@ namespace RaspberrySharp.IO.Interop
         public const uint BCM2835_GPFSEL0 = 0x0000;
         public const uint BCM2835_GPPUD = 0x0094;
         public const uint BCM2835_GPPUDCLK0 = 0x0098;
+        public const uint BCM2835_GPPUDCLK1 = 0x009c;
         public const uint BCM2835_GPSET0 = 0x001c;
+        public const uint BCM2835_GPSET1 = 0x0020;
         public const uint BCM2835_GPCLR0 = 0x0028;
+        public const uint BCM2835_GPCLR1 = 0x002c;
         public const uint BCM2835_GPLEV0 = 0x0034;
+        public const uint BCM2835_GPLEV1 = 0x0038;
 
         public const uint BCM2835_GPIO_PUD_OFF = 0;
         public const uint BCM2835_GPIO_PUD_DOWN = 1;

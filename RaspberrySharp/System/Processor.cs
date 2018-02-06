@@ -26,6 +26,11 @@
         Bcm2835,
 
         /// <summary>
+        /// Processor is BCM2836
+        /// </summary>
+        Bcm2836,
+
+        /// <summary>
         /// Processor is BCM2837
         /// </summary>
         Bcm2837
