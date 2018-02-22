@@ -1,4 +1,5 @@
-﻿using Demo.Utilities;
+﻿using Demo.Modules;
+using Demo.Utilities;
 using NLog;
 using RaspberrySharp.IO.GeneralPurpose;
 using System;
@@ -52,6 +53,18 @@ namespace Tests.Demo
             {
                 CommonHelper.Logger.Error(e, "GPIO Error : {0}", e.Message);
             }
+        }
+
+        private void BtnStartOW_Click(object sender, EventArgs e)
+        {
+            DS18B20Service ow = new DS18B20Service();
+            ow.OnTemperatureChanged += Ow_OnTemperatureChanged;
+            ow.Start();
+        }
+
+        private void Ow_OnTemperatureChanged(DS18B20EventArgs args)
+        {
+            lblTemperature.Invoke(new Action(() => lblTemperature.Text = args.T.DegreesCelsius.ToString()));
         }
     }
 }

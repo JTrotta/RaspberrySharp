@@ -20,7 +20,6 @@ namespace WatchPin
             var pinname = args[0];
 
             //TODO: Allow watch multiple pins simultaneously
-            //TODO: Allow to specify pin in different ways, ie, by name, by wiringPi, etc.
             if (!Enum.TryParse(pinname, true, out ProcessorPin userPin))
             {
                 Console.WriteLine("Could not find pin: " + pinname);
@@ -53,7 +52,6 @@ namespace WatchPin
             }
             finally
             {
-                // Leaves the pin unreleased so that other processes can keep reading
                 driver.Release(userPin);
             }
         }

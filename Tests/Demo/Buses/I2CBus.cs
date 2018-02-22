@@ -105,7 +105,7 @@ namespace Demo.Buses
         }
 
         /// <summary>
-        /// Write data array of bute to i2c bus
+        /// Write data array of byte to i2c bus
         /// </summary>
         /// <param name="data">the array of bytes</param>
         internal void WriteRegisterByte(byte[] data)
@@ -138,16 +138,6 @@ namespace Demo.Buses
         internal void WriteRegisterByte(TKey register, byte data)
         {
             WriteRegisterByte(register, new[] { data });
-
-            ////try
-            ////{
-            ////    if (_deviceConnection != null)
-            ////        _deviceConnection.Write(new[] { GetConstantAsByte(register), data });
-            ////}
-            ////catch (Exception e)
-            ////{
-            ////    CommonHelper.Log(LocalLogLevel.Error, e.Message);
-            ////}
         }
 
         /// <summary>

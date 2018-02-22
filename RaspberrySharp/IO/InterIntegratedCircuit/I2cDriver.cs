@@ -297,7 +297,7 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
 
                 /* Wait for write to complete and first byte back. */
                 uint wt = (uint)waitInterval * 3;
-                Console.WriteLine(wt);
+                //Console.WriteLine(wt);
                 this.Wait(wt);
 
 

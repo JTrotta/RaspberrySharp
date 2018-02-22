@@ -34,8 +34,11 @@
             this.btnOnOff = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnStartOW = new System.Windows.Forms.Button();
+            this.lblTemperature = new System.Windows.Forms.Label();
             this.tc.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tc
@@ -92,6 +95,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.lblTemperature);
+            this.tabPage3.Controls.Add(this.btnStartOW);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -99,6 +104,24 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "OneWire";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnStartOW
+            // 
+            this.btnStartOW.Location = new System.Drawing.Point(33, 19);
+            this.btnStartOW.Name = "btnStartOW";
+            this.btnStartOW.Size = new System.Drawing.Size(75, 23);
+            this.btnStartOW.TabIndex = 0;
+            this.btnStartOW.Text = "Start";
+            this.btnStartOW.UseVisualStyleBackColor = true;
+            this.btnStartOW.Click += new System.EventHandler(this.BtnStartOW_Click);
+            // 
+            // lblTemperature
+            // 
+            this.lblTemperature.AutoSize = true;
+            this.lblTemperature.Location = new System.Drawing.Point(185, 24);
+            this.lblTemperature.Name = "lblTemperature";
+            this.lblTemperature.Size = new System.Drawing.Size(0, 13);
+            this.lblTemperature.TabIndex = 1;
             // 
             // Main
             // 
@@ -111,6 +134,8 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.tc.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -123,6 +148,8 @@
         private System.Windows.Forms.Button btnOnOff;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button btnStartOW;
+        private System.Windows.Forms.Label lblTemperature;
     }
 }
 
