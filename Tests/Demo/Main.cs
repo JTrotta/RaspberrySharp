@@ -1,13 +1,14 @@
 ﻿using Demo.Modules;
 using Demo.Utilities;
-using NLog;
+
 using RaspberrySharp.IO.GeneralPurpose;
 using System;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Tests.Demo
 {
+    using RaspberrySharp.System;
+
     public partial class Main : Form
     {
         //GPIO
@@ -20,7 +21,21 @@ namespace Tests.Demo
 
         private void Main_Load(object sender, EventArgs e)
         {
+            ShowSystem();
             InitGPIO();
+        }
+
+        private void ShowSystem()
+        {
+            lbSystem.Items.Add($"Model : {Board.Current.Model}");
+            lbSystem.Items.Add($"Is Raspberry : {Board.Current.IsRaspberryPi}");
+            lbSystem.Items.Add($"ConnectorPinout : {Board.Current.ConnectorPinout}");
+            lbSystem.Items.Add($"Firmware : {Board.Current.Firmware}");
+            lbSystem.Items.Add($"Is Overclocked : {Board.Current.IsOverclocked}");
+            lbSystem.Items.Add($"Processor : {Board.Current.Processor}");
+            lbSystem.Items.Add($"ProcessorName : {Board.Current.ProcessorName}");
+            lbSystem.Items.Add($"SerialNumber : {Board.Current.SerialNumber}");
+            lbSystem.Update();
         }
 
         private void InitGPIO()
