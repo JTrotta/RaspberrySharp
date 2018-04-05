@@ -3,7 +3,7 @@
 namespace RaspberrySharp.System
 {
     /// <summary>
-    /// The Rasperry Pi model.
+    /// The Raspberry Pi model.
     /// </summary>
     public enum Model
     {
@@ -63,6 +63,11 @@ namespace RaspberrySharp.System
         B3,
 
         /// <summary>
+        /// Pi 3 Model B+.
+        /// </summary>
+        B3Plus,
+
+        /// <summary>
         /// Compute module 3.
         /// </summary>
         ComputeModule3,
@@ -104,6 +109,8 @@ namespace RaspberrySharp.System
                     return "Raspberry Pi Zero W";
                 case Model.B3:
                     return "Raspberry Pi 3 Model B";
+                case Model.B3Plus:
+                    return "Raspberry Pi 3 Model B+";
                 case Model.ComputeModule3:
                     return "Raspberry Pi Compute Module 3";
 

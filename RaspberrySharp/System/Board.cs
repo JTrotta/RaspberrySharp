@@ -50,7 +50,7 @@ namespace RaspberrySharp.System
         /// Gets a value indicating whether this instance is a Raspberry Pi.
         /// </summary>
         /// <value>
-        /// 	<c>true</c> if this instance is a Raspberry Pi; otherwise, <c>false</c>.
+        ///   <c>true</c> if this instance is a Raspberry Pi; otherwise, <c>false</c>.
         /// </value>
         public bool IsRaspberryPi
         {
@@ -166,31 +166,41 @@ namespace RaspberrySharp.System
 
         #region Private Helpers
 
+        /// <summary>
+        /// Detect the Raspberry Pi CPU information from /proc/cpuinfo
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Board"/>.
+        /// </returns>
         private static Board LoadBoard()
         {
             try
             {
-                const string filePath = "/proc/cpuinfo";
+                const string FilePath = "/proc/cpuinfo";
 
-                var cpuInfo = File.ReadAllLines(filePath);
+                var cpuInfo = File.ReadAllLines(FilePath);
                 var settings = new Dictionary<string, string>();
                 var suffix = string.Empty;
 
-                foreach (var l in cpuInfo)
+                foreach (var line in cpuInfo)
                 {
-                    var separator = l.IndexOf(':');
+                    var separator = line.IndexOf(':');
 
-                    if (!string.IsNullOrWhiteSpace(l) && separator > 0)
+                    if (!string.IsNullOrWhiteSpace(line) && separator > 0)
                     {
-                        var key = l.Substring(0, separator).Trim();
-                        var val = l.Substring(separator + 1).Trim();
+                        var key = line.Substring(0, separator).Trim();
+                        var val = line.Substring(separator + 1).Trim();
                         if (string.Equals(key, "processor", StringComparison.InvariantCultureIgnoreCase))
+                        {
                             suffix = "." + val;
+                        }
 
                         settings.Add(key + suffix, val);
                     }
                     else
-                        suffix = "";
+                    {
+                        suffix = string.Empty;
+                    }
                 }
 
                 return new Board(settings);
@@ -246,6 +256,9 @@ namespace RaspberrySharp.System
                 case 0x2082:
                     return Model.B3;
 
+                case 0x20D3:
+                    return Model.B3Plus;
+
                 case 0x20A0:
                     return Model.ComputeModule3;
 
@@ -271,6 +284,7 @@ namespace RaspberrySharp.System
                 case Model.B2:
                 case Model.Zero:
                 case Model.B3:
+                case Model.B3Plus:
                 case Model.ComputeModule3:
                     return ConnectorPinout.Plus;
 

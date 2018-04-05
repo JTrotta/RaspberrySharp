@@ -34,8 +34,9 @@
             this.btnOnOff = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnStartOW = new System.Windows.Forms.Button();
             this.lblTemperature = new System.Windows.Forms.Label();
+            this.btnStartOW = new System.Windows.Forms.Button();
+            this.lbSystem = new System.Windows.Forms.ListBox();
             this.tc.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -105,6 +106,14 @@
             this.tabPage3.Text = "OneWire";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // lblTemperature
+            // 
+            this.lblTemperature.AutoSize = true;
+            this.lblTemperature.Location = new System.Drawing.Point(185, 24);
+            this.lblTemperature.Name = "lblTemperature";
+            this.lblTemperature.Size = new System.Drawing.Size(0, 13);
+            this.lblTemperature.TabIndex = 1;
+            // 
             // btnStartOW
             // 
             this.btnStartOW.Location = new System.Drawing.Point(33, 19);
@@ -115,19 +124,20 @@
             this.btnStartOW.UseVisualStyleBackColor = true;
             this.btnStartOW.Click += new System.EventHandler(this.BtnStartOW_Click);
             // 
-            // lblTemperature
+            // lbSystem
             // 
-            this.lblTemperature.AutoSize = true;
-            this.lblTemperature.Location = new System.Drawing.Point(185, 24);
-            this.lblTemperature.Name = "lblTemperature";
-            this.lblTemperature.Size = new System.Drawing.Size(0, 13);
-            this.lblTemperature.TabIndex = 1;
+            this.lbSystem.FormattingEnabled = true;
+            this.lbSystem.Location = new System.Drawing.Point(5, 5);
+            this.lbSystem.Name = "lbSystem";
+            this.lbSystem.Size = new System.Drawing.Size(556, 108);
+            this.lbSystem.TabIndex = 1;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 378);
+            this.Controls.Add(this.lbSystem);
             this.Controls.Add(this.tc);
             this.Name = "Main";
             this.Text = "RaspberrySharp Demo";
@@ -150,6 +160,7 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btnStartOW;
         private System.Windows.Forms.Label lblTemperature;
+        private System.Windows.Forms.ListBox lbSystem;
     }
 }
 
