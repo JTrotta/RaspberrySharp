@@ -16,6 +16,7 @@ The implementation is based on the work by Eric Bezine <http://www.raspberry-sha
 * SPI				      (beta)
 * OneWire          
 * No dependencies, just one library
+* Many samples to show the functionality 
 
 ## Supported frameworks
 
@@ -27,8 +28,8 @@ The implementation is based on the work by Eric Bezine <http://www.raspberry-sha
 
 * Raspberry Pi 1 model A
 * Raspberry Pi 1 model B  
-* Raspberry Pi 2 model B
-* Raspberry Pi 3 model B
+* Raspberry Pi 2 model B (+)
+* Raspberry Pi 3 model B (+)
 * Raspberry Pi Zero
 * Raspberry Pi Zero W
 * Raspberry Pi CM1
