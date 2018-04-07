@@ -75,8 +75,7 @@ namespace RaspberrySharp.IO.Interop
         public const int MAP_SHARED = 1;
         public const int MAP_FAILED = -1;
         #endregion
-
-
+        
         #region Libc
 
         #region Constants

@@ -247,6 +247,7 @@ namespace RaspberrySharp.IO.GeneralPurpose
             {
                 offset = Math.DivRem((int)pin, 32, out shift);
                 pinGroupAddress = gpioAddress + (int)((value ? OP.BCM2835_GPSET0 : OP.BCM2835_GPCLR0) + offset);
+                Console.WriteLine($"Write Done GPIO offset:{offset} pinGroupAddress:{pinGroupAddress.ToString("X8")}");
             }
             else
             {
