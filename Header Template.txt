@@ -1,0 +1,31 @@
+**************************************************************
+Project     : $PROJECT$
+Filename    : $FILENAME$
+Github      : https://github.com/JTrotta/RaspberrySharp
+**************************************************************
+Github Wiki : https://github.com/JTrotta/RaspberrySharp/wiki
+DataSheet   : 
+**************************************************************
+Links       : 
+**************************************************************
+Notes
+**************************************************************
+
+
+Sample: 
+// **************************************************************
+// Project     : RaspberrySharp
+// Filename    : Ds1307_I2C.cs
+// Guthub      : https://github.com/JTrotta/RaspberrySharp
+// **************************************************************
+// Github Wiki : https://github.com/JTrotta/RaspberrySharp/wiki/DS1307---I2C---Clock
+// DataSheet   : http://www.alldatasheet.com/datasheet-pdf/pdf/58481/DALLAS/DS1307.html
+// **************************************************************
+// Links       : http://www.linux-ratgeber.de/realtime-clock-rtc-ds1307-am-raspberry-pi-betreiben/
+//               https://github.com/PaulStoffregen/DS1307RTC (Arduino)
+// **************************************************************
+// Notes
+// * The Clock Module needs to be modified to work with the Raspberry Pi according to this article
+//   http://electronics.stackexchange.com/questions/98361/how-to-modify-ds1307-rtc-to-use-3-3v-for-raspberry-pi
+// * The Datasheet can be found here:  (the Memory Map is on Page 5. Note that the values in RAM are stored in Nibbles).
+// **************************************************************

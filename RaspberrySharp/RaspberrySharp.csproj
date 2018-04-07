@@ -20,4 +20,16 @@ This library is a complete refactoring of Raspberry-Sharp libraries, merged into
     <PackageProjectUrl>https://github.com/JTrotta/RaspberrySharp</PackageProjectUrl>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Components\Controllers\" />
+    <Folder Include="Components\Converters\" />
+    <Folder Include="Components\Devices\" />
+    <Folder Include="Components\Displays\" />
+    <Folder Include="Components\Memories\" />
+    <Folder Include="Components\Expanders\" />
+    <Folder Include="Components\Leds\" />
+    <Folder Include="Components\Monitors\" />
+    <Folder Include="Components\Sensors\Temperature\" />
+  </ItemGroup>
+
 </Project>
