@@ -4,7 +4,7 @@ using RaspberrySharp.IO.InterIntegratedCircuit;
 namespace Demo.Buses
 {
     /// <summary>
-    /// Classe da condividere con tutti i service I2C, poichè i pin sono sempre gli stessi
+    /// This static class should be shared among I2C services, that's because I2C pins are qlways the same
     /// </summary>
     public static class I2CConnectorDriver
     {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace RaspberrySharp.System.Timers
 {
@@ -47,7 +48,18 @@ namespace RaspberrySharp.System.Timers
         {
             Sleep(TimeSpan.FromMilliseconds(milliSeconds));
         }
+        
 
+        public static async Task SleepAsync(TimeSpan time)
+        {
+            if (time.TotalMilliseconds < 0)
+                await Task.CompletedTask;
+
+            if (Board.Current.IsRaspberryPi)
+                HighResolutionTimer.Sleep(time);
+            else
+                await Task.Delay(time);
+        }
         #endregion
     }
 }

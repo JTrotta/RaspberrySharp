@@ -359,6 +359,7 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
             // Set Data Length
             WriteUInt32(dlen, len);
 
+            /* pre populate FIFO with max buffer */
             while (remaining != 0 && i < OP.BCM2835_BSC_FIFO_SIZE)
             {
                 WriteUInt32(fifo, buffer[i]);
@@ -571,6 +572,11 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
             SafeWriteUInt32(address, v);
         }
 
+        /// <summary>
+        /// Read with memory barriers from peripheral (bcm2835_peri_read)
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
         private static uint SafeReadUInt32(IntPtr address)
         {
             // Make sure we dont return the _last_ read which might get lost
@@ -585,7 +591,7 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
         }
 
         /// <summary>
-        /// Read no barrier
+        /// Read no barrier (bcm2835_peri_read_nb)
         /// </summary>
         /// <param name="address"></param>
         /// <returns></returns>

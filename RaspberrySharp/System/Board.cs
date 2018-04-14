@@ -85,8 +85,7 @@ namespace RaspberrySharp.System
         {
             get
             {
-                Processor processor;
-                return Enum.TryParse(ProcessorName, true, out processor) ? processor : Processor.Unknown;
+                return Enum.TryParse(ProcessorName, true, out Processor processor) ? processor : Processor.Unknown;
             }
         }
 
@@ -97,11 +96,9 @@ namespace RaspberrySharp.System
         {
             get
             {
-                string revision;
-                int firmware;
-                if (settings.TryGetValue("Revision", out revision)
+                if (settings.TryGetValue("Revision", out string revision)
                     && !string.IsNullOrEmpty(revision)
-                    && int.TryParse(revision, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out firmware))
+                    && int.TryParse(revision, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out int firmware))
                     return firmware;
 
                 return 0;
@@ -115,8 +112,7 @@ namespace RaspberrySharp.System
         {
             get
             {
-                string serial;
-                if (settings.TryGetValue("Serial", out serial)
+                if (settings.TryGetValue("Serial", out string serial)
                     && !string.IsNullOrEmpty(serial))
                     return serial;
 

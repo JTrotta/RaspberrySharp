@@ -7,7 +7,7 @@
     <Authors>JTtotta</Authors>
     <Company>ENET</Company>
     <Description>A .NET/Mono IO Library for Raspberry Pi
-This library is a complete refactoring of Raspberry-Sharp libraries, merged into one library and updated to RB3 and CM3.</Description>
+This library is a complete refactoring of Raspberry-Sharp libraries, merged into one library and updated to RB3, CM3 and RB3+</Description>
     <PackageReleaseNotes>This is a complete Beta Version.
 * [IO] Added Onewire driver.</PackageReleaseNotes>
     <PackageLicenseUrl>https://github.com/JTrotta/RaspberrySharp/blob/master/LICENSE</PackageLicenseUrl>
