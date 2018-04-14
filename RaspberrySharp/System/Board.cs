@@ -20,6 +20,7 @@ namespace RaspberrySharp.System
 
         private readonly Dictionary<string, string> settings;
         private readonly Lazy<Model> model;
+        private readonly Processor _processor;
         private readonly Lazy<ConnectorPinout> connectorPinout;
 
         #endregion
@@ -30,6 +31,8 @@ namespace RaspberrySharp.System
         {
             model = new Lazy<Model>(LoadModel);
             connectorPinout = new Lazy<ConnectorPinout>(LoadConnectorPinout);
+
+            _processor = LoadProcessor(model.Value);
 
             this.settings = settings;
         }
@@ -85,7 +88,8 @@ namespace RaspberrySharp.System
         {
             get
             {
-                return Enum.TryParse(ProcessorName, true, out Processor processor) ? processor : Processor.Unknown;
+                //return Enum.TryParse(ProcessorName, true, out Processor processor) ? processor : Processor.Unknown;
+                return _processor;
             }
         }
 
@@ -286,6 +290,27 @@ namespace RaspberrySharp.System
 
                 default:
                     return ConnectorPinout.Unknown;
+            }
+        }
+
+
+        private Processor LoadProcessor(Model model)
+        {
+            switch (model)
+            {
+                case Model.A: return Processor.Bcm2708;
+                case Model.APlus: return Processor.Bcm2708;
+                case Model.BRev1: return Processor.Bcm2708;
+                case Model.BRev2: return Processor.Bcm2708;
+                case Model.BPlus: return Processor.Bcm2708;
+                case Model.ComputeModule: return Processor.Bcm2708;
+                case Model.B2: return Processor.Bcm2709;
+                case Model.Zero: return Processor.Bcm2708;
+                case Model.ZeroW: return Processor.Bcm2708;
+                // TBC: B3(+) should be a BCM2710 processor ... 
+                case Model.B3: return Processor.Bcm2709;
+                case Model.B3Plus: return Processor.Bcm2709;
+                default: return Processor.Unknown;
             }
         }
 
