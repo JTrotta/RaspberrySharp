@@ -269,7 +269,6 @@ namespace RaspberrySharp.IO.GeneralPurpose
                     return OP.BCM2835_GPIO_BASE;
 
                 case Processor.Bcm2709:
-                case Processor.Bcm2835:
                     return OP.BCM2836_GPIO_BASE;
 
                 default:

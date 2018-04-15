@@ -29,7 +29,7 @@ namespace Tests.Demo
         {
             lbSystem.Items.Add($"Model : {Board.Current.Model}");
             lbSystem.Items.Add($"Is Raspberry : {Board.Current.IsRaspberryPi}");
-            //lbSystem.Items.Add($"ConnectorPinout : {Board.Current.ConnectorPinout}");
+            lbSystem.Items.Add($"ConnectorPinout : {Board.Current.ConnectorPinout}");
             lbSystem.Items.Add($"Firmware : {Board.Current.Firmware}");
             lbSystem.Items.Add($"Is Overclocked : {Board.Current.IsOverclocked}");
             lbSystem.Items.Add($"Processor : {Board.Current.Processor}");

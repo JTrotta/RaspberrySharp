@@ -19,20 +19,5 @@
         /// Processor is a BCM2709.
         /// </summary>
         Bcm2709,
-
-        /// <summary>
-        /// Processor is BCM2835
-        /// </summary>
-        Bcm2835,
-
-        /// <summary>
-        /// Processor is BCM2836
-        /// </summary>
-        Bcm2836,
-
-        /// <summary>
-        /// Processor is BCM2837
-        /// </summary>
-        Bcm2837
     }
 }
