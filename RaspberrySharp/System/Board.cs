@@ -29,12 +29,12 @@ namespace RaspberrySharp.System
 
         private Board(Dictionary<string, string> settings)
         {
+            this.settings = settings;
+
             model = new Lazy<Model>(LoadModel);
             connectorPinout = new Lazy<ConnectorPinout>(LoadConnectorPinout);
 
             _processor = LoadProcessor(model.Value);
-
-            this.settings = settings;
         }
 
         #endregion
