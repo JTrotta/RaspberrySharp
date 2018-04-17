@@ -21,7 +21,7 @@ namespace Tests.Demo
 
         private void Main_Load(object sender, EventArgs e)
         {
-            ShowSystem();
+            //ShowSystem();
             InitGPIO();
         }
 

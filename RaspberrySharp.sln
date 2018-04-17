@@ -44,6 +44,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Samples\Advanced\De
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blink", "Samples\Gpio\Blink\Blink.csproj", "{EC0CC75A-8407-44F7-924E-03F433B426B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I2CDetect", "Samples\Advanced\I2CDetect\I2CDetect.csproj", "{4529F9F6-D0C3-4AEE-A58E-2C9327F51432}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +68,10 @@ Global
 		{EC0CC75A-8407-44F7-924E-03F433B426B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC0CC75A-8407-44F7-924E-03F433B426B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC0CC75A-8407-44F7-924E-03F433B426B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4529F9F6-D0C3-4AEE-A58E-2C9327F51432}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4529F9F6-D0C3-4AEE-A58E-2C9327F51432}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4529F9F6-D0C3-4AEE-A58E-2C9327F51432}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4529F9F6-D0C3-4AEE-A58E-2C9327F51432}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +92,7 @@ Global
 		{CE4C9A8B-26E2-4D12-9F98-B213BC9DBCDF} = {4E76F752-68F9-4643-A25E-EDC4D60B600F}
 		{866BBBAC-679C-4B64-AB88-3AAB322AC9AE} = {CE4C9A8B-26E2-4D12-9F98-B213BC9DBCDF}
 		{EC0CC75A-8407-44F7-924E-03F433B426B6} = {FD9A4C89-5B48-4570-8EF0-D362E7CA6E5A}
+		{4529F9F6-D0C3-4AEE-A58E-2C9327F51432} = {CE4C9A8B-26E2-4D12-9F98-B213BC9DBCDF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {16398D2F-864E-4257-A25A-705BE16EC1A8}
