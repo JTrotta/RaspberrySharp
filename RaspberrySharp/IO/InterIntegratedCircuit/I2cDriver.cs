@@ -461,7 +461,6 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
                     return OP.BCM2835_BSC1_BASE;
 
                 case Processor.Bcm2709:
-                case Processor.Bcm2835:
                     return OP.BCM2836_BSC1_BASE;
 
                 default:
@@ -477,7 +476,6 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
                     return OP.BCM2835_GPIO_BASE;
 
                 case Processor.Bcm2709:
-                case Processor.Bcm2835:
                     return OP.BCM2836_GPIO_BASE;
 
                 default:
