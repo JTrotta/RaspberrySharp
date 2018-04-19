@@ -25,9 +25,9 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
                 // the Write.endTransmisstion to see if
                 // a device did acknowledge to the address.
                 _deviceConnection = _driver.Connect(address);
-                byte error = _deviceConnection.Read(1)[0];
+                byte result = _deviceConnection.Read(1)[0];
 
-                if (error == 0)
+                if (result != 0)
                 {
                     //Serial.print("I2C device found at address 0x");
                     //if (address < 16)
@@ -37,7 +37,7 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
 
                     nDevices.Add(address);
                 }
-                else if (error == 4)
+                else if (result == 0)
                 {
                     //Serial.print("Unknow error at address 0x");
                     //if (address < 16)
