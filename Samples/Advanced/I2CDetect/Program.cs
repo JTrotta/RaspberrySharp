@@ -55,7 +55,7 @@ namespace I2CDetect
                 PrintRow(i);
             }
 
-            Console.ReadKey();
+            //Console.ReadKey();
         }
 
         static void PrintRow(int rowId)

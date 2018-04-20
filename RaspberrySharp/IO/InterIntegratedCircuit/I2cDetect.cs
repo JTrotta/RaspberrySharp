@@ -20,24 +20,18 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
         public List<byte> Detect()
         {
             List<byte> nDevices = new List<byte>();
-            for (byte address = 1; address < 127; address++)
+            for (byte address = 3; address < 120; address++)
+            //byte address = 0x62;
             {
-                // The i2c_scanner uses the return value of
-                // the Write.endTransmisstion to see if
-                // a device did acknowledge to the address.
                 _deviceConnection = _driver.Connect(address);
-                byte result = 4;
                 try
                 {
-                    result = _deviceConnection.Read(1)[0];
-                    if (result != 0)
-                    {
-                        nDevices.Add(address);
-                    }
+                    var result = _deviceConnection.Read(1)[0];
+                    nDevices.Add(address);
                 }
-                catch
+                catch(Exception e)
                 {
-                    Console.WriteLine($"No Dev {address}");
+                    //Console.WriteLine($"No Dev {address}: {e.Message}");
                 }
             }
             return nDevices;
