@@ -483,6 +483,10 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
             }
         }
 
+        /// <summary>
+        /// Used to prepare sending data to a specific device address
+        /// </summary>
+        /// <param name="deviceAddress"></param>
         private void EnsureDeviceAddress(int deviceAddress)
         {
             if (deviceAddress != currentDeviceAddress)

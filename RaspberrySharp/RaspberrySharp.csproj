@@ -2,22 +2,24 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Authors>JTtotta</Authors>
     <Company>ENET</Company>
     <Description>A .NET/Mono IO Library for Raspberry Pi
 This library is a complete refactoring of Raspberry-Sharp libraries, merged into one library and updated to RB3, CM3 and RB3+</Description>
     <PackageReleaseNotes>This is a complete Beta Version.
-* [IO] Added Onewire driver.</PackageReleaseNotes>
+* Some refactoring</PackageReleaseNotes>
     <PackageLicenseUrl>https://github.com/JTrotta/RaspberrySharp/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>ENET 2018</Copyright>
     <PackageTags>Raspberry GPIO I2C SPI IOT MONO RB1 RB2 RB3 CM1 CM3</PackageTags>
-    <Version>1.3.0-beta</Version>
+    <Version>1.3.2-beta</Version>
     <NeutralLanguage></NeutralLanguage>
     <PackageIconUrl>https://github.com/JTrotta/RaspberrySharp/blob/master/RaspberrySharp/Images/Icon.png?raw=true</PackageIconUrl>
     <RepositoryUrl>https://github.com/JTrotta/RaspberrySharp</RepositoryUrl>
     <PackageProjectUrl>https://github.com/JTrotta/RaspberrySharp</PackageProjectUrl>
+    <AssemblyVersion>1.3.2.0</AssemblyVersion>
+    <FileVersion>1.3.2.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

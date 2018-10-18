@@ -310,6 +310,7 @@ namespace RaspberrySharp.System
                 // TBC: B3(+) should be a BCM2710 processor ... 
                 case Model.B3: return Processor.Bcm2709;
                 case Model.B3Plus: return Processor.Bcm2709;
+                case Model.ComputeModule3: return Processor.Bcm2709;
                 default: return Processor.Unknown;
             }
         }
