@@ -283,6 +283,7 @@ namespace RaspberrySharp.System
                 case Model.APlus:
                 case Model.B2:
                 case Model.Zero:
+                case Model.ZeroW:
                 case Model.B3:
                 case Model.B3Plus:
                 case Model.ComputeModule3:
