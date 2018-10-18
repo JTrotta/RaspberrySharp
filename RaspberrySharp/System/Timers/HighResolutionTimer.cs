@@ -15,6 +15,7 @@ namespace RaspberrySharp.System.Timers
         private TimeSpan interval;
         private Action action;
 
+        private CancellationTokenSource tokenSource;
         private Thread thread;
 
         private static readonly int nanoSleepOffset = Calibrate();
@@ -131,7 +132,8 @@ namespace RaspberrySharp.System.Timers
                     return;
 
                 delay = startDelay;
-                thread = new Thread(ThreadProcess);
+                tokenSource = new CancellationTokenSource();
+                thread = new Thread(() => ThreadProcess(tokenSource.Token));
                 thread.Start();
             }
         }
@@ -147,7 +149,8 @@ namespace RaspberrySharp.System.Timers
                     return;
 
                 if (thread != Thread.CurrentThread)
-                    thread.Abort();
+                    tokenSource.Cancel();
+
                 thread = null;
             }
         }
@@ -178,13 +181,16 @@ namespace RaspberrySharp.System.Timers
                     a => (int)(a / referenceCount));
         }
 
-        private void ThreadProcess()
+        private void ThreadProcess(CancellationToken token)
         {
             var thisThread = thread;
 
             Sleep(delay);
             while (thread == thisThread)
             {
+                if (token.IsCancellationRequested)
+                    return;
+
                 (Action ?? NoOp)();
                 Sleep(interval);
             }
