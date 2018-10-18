@@ -30,7 +30,7 @@ namespace Blink
 
         static void Main()
         {
-            conPin = new GpioConnection(ProcessorPin.Gpio18.Output());
+            conPin = new GpioConnection(ProcessorPin.Gpio16.Output());
 
             Console.WriteLine("Blink Sample");
             Console.WriteLine("===============");

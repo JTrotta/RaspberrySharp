@@ -430,9 +430,7 @@ namespace RaspberrySharp.IO.GeneralPurpose
         /// <param name="e">The <see cref="Raspberry.IO.GeneralPurpose.PinStatusEventArgs"/> instance containing the event data.</param>
         protected void OnPinStatusChanged(PinStatusEventArgs e)
         {
-            var handler = PinStatusChanged;
-            if (handler != null)
-                handler(this, e);
+            PinStatusChanged?.Invoke(this, e);
         }
 
         #endregion
@@ -490,8 +488,10 @@ namespace RaspberrySharp.IO.GeneralPurpose
                 var inputConfiguration = (InputPinConfiguration)configuration;
                 var pinValue = Driver.Read(inputConfiguration.Pin);
 
-                var pin = (ProcessorPins)((uint)1 << (int)inputConfiguration.Pin);
+                var pin = (ProcessorPins)((ulong)1 << (int)inputConfiguration.Pin);
                 inputPins = inputPins | pin;
+                Console.WriteLine(pin);
+                Console.WriteLine(inputPins);
                 pinRawValues = Driver.Read(inputPins);
 
                 if (inputConfiguration.Resistor != PinResistor.None && (Driver.GetCapabilities() & GpioConnectionDriverCapabilities.CanSetPinResistor) > 0)
@@ -532,18 +532,19 @@ namespace RaspberrySharp.IO.GeneralPurpose
         private void CheckInputPins()
         {
             var newPinValues = Driver.Read(inputPins);
-
             var changes = newPinValues ^ pinRawValues;
+            
             if (changes == ProcessorPins.None)
                 return;
 
             var notifiedConfigurations = new List<PinConfiguration>();
+            
             foreach (var np in changes.Enumerate())
             {
-                var processorPin = (ProcessorPins)((uint)1 << (int)np);
+                var processorPin = (ProcessorPins)((ulong)1 << (int)np);
                 var oldPinValue = (pinRawValues & processorPin) != ProcessorPins.None;
                 var newPinValue = (newPinValues & processorPin) != ProcessorPins.None;
-
+                //Console.WriteLine("{0}  --  {1} -- {2}", newPinValues, pinRawValues, changes);
                 if (oldPinValue != newPinValue)
                 {
                     var pin = (InputPinConfiguration)pinConfigurations[np];

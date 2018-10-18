@@ -5,17 +5,22 @@ namespace RaspberrySharp.IO.Interop
 {
     internal static class OP
     {
-        #region GPIO
+        #region Base
 
         public const uint BCM2835_PERI_BASE = 0x20000000;
         public const uint BCM2835_GPIO_BASE = (BCM2835_PERI_BASE + 0x200000);
         public const uint BCM2835_BSC0_BASE = (BCM2835_PERI_BASE + 0x205000);
         public const uint BCM2835_BSC1_BASE = (BCM2835_PERI_BASE + 0x804000);
+        public const uint BCM2835_GPIO_PWM  = (BCM2835_PERI_BASE + 0x20C000);
+        public const uint BCM2835_CLOCK_BASE = (BCM2835_PERI_BASE + 0x101000);
+        
 
         public const uint BCM2836_PERI_BASE = 0x3F000000;
         public const uint BCM2836_GPIO_BASE = (BCM2836_PERI_BASE + 0x200000);
         public const uint BCM2836_BSC0_BASE = (BCM2836_PERI_BASE + 0x205000);
         public const uint BCM2836_BSC1_BASE = (BCM2836_PERI_BASE + 0x804000);
+        public const uint BCM2836_GPIO_PWM  = (BCM2836_PERI_BASE + 0x20C000);
+        public const uint BCM2836_CLOCK_BASE = (BCM2836_PERI_BASE + 0x101000);
 
         public const uint BCM2835_BLOCK_SIZE = (4 * 1024);
 
@@ -41,6 +46,10 @@ namespace RaspberrySharp.IO.Interop
         public const uint BCM2835_BSC_FIFO_SIZE = 16;
 
         public const uint BCM2835_CORE_CLK_HZ = 250000000;
+
+        #endregion
+
+        #region GPIO
 
         public const uint BCM2835_GPIO_FSEL_INPT = 0;
         public const uint BCM2835_GPIO_FSEL_OUTP = 1;
@@ -75,7 +84,32 @@ namespace RaspberrySharp.IO.Interop
         public const int MAP_SHARED = 1;
         public const int MAP_FAILED = -1;
         #endregion
-        
+
+        #region PWM
+
+
+        /* Defines for PWM, word offsets (ie 4 byte multiples) */
+        public const uint BCM2835_PWM_CONTROL = 0;
+
+        public const uint BCM2835_PWM0_RANGE = 4;
+        public const uint BCM2835_PWM0_DATA = 5;
+        public const uint BCM2835_PWM1_RANGE = 8;
+        public const uint BCM2835_PWM1_DATA = 9;
+
+        /* Defines for PWM Clock, word offsets (ie 4 byte multiples) */
+        public const uint BCM2835_PWMCLK_CNTL = 40;
+        public const uint BCM2835_PWMCLK_DIV  = 41;
+        public const uint BCM2835_PWM_PASSWRD = (0x5A << 24);  /*!< Password to enable setting PWM clock */
+
+        public const uint BCM2835_PWM1_MS_MODE = 0x8000;  /*!< Run in Mark/Space mode */
+
+        public const uint BCM2835_PWM1_ENABLE = 0x0100;  /*!< Channel Enable */
+
+        public const uint BCM2835_PWM0_MS_MODE = 0x0080;  /*!< Run in Mark/Space mode */
+
+        public const uint BCM2835_PWM0_ENABLE = 0x0001;  /*!< Channel Enable */
+        #endregion
+
         #region Libc
 
         #region Constants

@@ -246,15 +246,14 @@ namespace RaspberrySharp.IO.GeneralPurpose
             if ((int)pin < 32)
             {
                 offset = Math.DivRem((int)pin, 32, out shift);
-                pinGroupAddress = gpioAddress + (int)((value ? OP.BCM2835_GPSET0 : OP.BCM2835_GPCLR0) + offset);
-                Console.WriteLine($"Write Done GPIO offset:{offset} pinGroupAddress:{pinGroupAddress.ToString("X8")}");
+                pinGroupAddress = gpioAddress + (int)((value ? OP.BCM2835_GPSET0 : OP.BCM2835_GPCLR0) + offset);                
             }
             else
             {
                 offset = Math.DivRem((int)pin - 32, 32, out shift); // to use gpio >= 32 
                 pinGroupAddress = gpioAddress + (int)((value ? OP.BCM2835_GPSET1 : OP.BCM2835_GPCLR1) + offset);
             }
-
+            //Console.WriteLine($"Write Done GPIO offset:{offset} pinGroupAddress:{pinGroupAddress.ToString("X8")}");
             SafeWriteUInt32(pinGroupAddress, (uint)1 << shift);
         }
 
@@ -279,8 +278,9 @@ namespace RaspberrySharp.IO.GeneralPurpose
                 offset = Math.DivRem((int)pin - 32, 32, out shift);
                 pinGroupAddress = gpioAddress + (int)(OP.BCM2835_GPLEV1 + offset);
             }
-            var value = SafeReadUInt32(pinGroupAddress);
 
+            var value = SafeReadUInt32(pinGroupAddress);
+            Console.WriteLine($"Reading Done GPIO offset:{offset} pinGroupAddress:{pinGroupAddress.ToString("X8")} shift: {shift} value:{value}");
             return (value & ((uint)1 << shift)) != 0;
         }
 
@@ -293,11 +293,22 @@ namespace RaspberrySharp.IO.GeneralPurpose
         /// </returns>
         public ProcessorPins Read(ProcessorPins pins)
         {
-            //var pinGroupAddress = gpioAddress + (int)(Interop.BCM2835_GPLEV0 + (uint)0 * 4);
-            var pinGroupAddress = gpioAddress + (int)(OP.BCM2835_GPLEV0);
-            var value = SafeReadUInt32(pinGroupAddress);
-
-            return (ProcessorPins)((uint)pins & value);
+            IntPtr pinGroupAddress;
+            if ((ulong)pins <= ((ulong)1 << 31))
+            {
+                pinGroupAddress = gpioAddress + (int)(OP.BCM2835_GPLEV0);
+                uint value = SafeReadUInt32(pinGroupAddress);
+                //Console.WriteLine($"Reading GPLEV0 status pis:{(uint)pins} pinGroupAddress:{pinGroupAddress.ToString("X8")} value:{value} pin:{(ProcessorPins)((ulong)pins & value)}");
+                return (ProcessorPins)((uint)pins & value);
+            }
+            else
+            {
+                ulong pins2 = (ulong)pins >> 32;
+                pinGroupAddress = gpioAddress + (int)(OP.BCM2835_GPLEV1);
+                uint value = SafeReadUInt32(pinGroupAddress);
+                //Console.WriteLine($"Reading GPLEV1 status pis:{(ulong)pins} pinGroupAddress:{pinGroupAddress.ToString("X8")} value:{value} pin:{(ProcessorPins)(((ulong)pins2 & value) << 32)}");
+                return (ProcessorPins)(((ulong)pins2 & value) << 32);
+            }           
         }
 
         #endregion

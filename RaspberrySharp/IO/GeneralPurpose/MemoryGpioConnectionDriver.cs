@@ -204,7 +204,7 @@ namespace RaspberrySharp.IO.GeneralPurpose
             {
                 offset = Math.DivRem((int)pin, 32, out shift);
                 pinGroupAddress = gpioAddress + (int)((value ? OP.BCM2835_GPSET0 : OP.BCM2835_GPCLR0) + offset);
-                Console.WriteLine("Write Done Memory");
+                //Console.WriteLine("Write Done Memory");
             }
             else
             {
@@ -236,8 +236,9 @@ namespace RaspberrySharp.IO.GeneralPurpose
                 offset = Math.DivRem((int)pin - 32, 32, out shift);
                 pinGroupAddress = gpioAddress + (int)(OP.BCM2835_GPLEV1 + offset);
             }
-            var value = SafeReadUInt32(pinGroupAddress);
 
+            var value = SafeReadUInt32(pinGroupAddress);
+            Console.WriteLine($"Reading Done GPIO offset:{offset} pinGroupAddress:{pinGroupAddress.ToString("X8")} shift: {shift} value:{value}");
             return (value & ((uint)1 << shift)) != 0;
         }
 
