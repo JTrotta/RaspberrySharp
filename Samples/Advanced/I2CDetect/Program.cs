@@ -25,10 +25,10 @@ namespace I2CDetect
     /// </summary>
     public class Program
     {
-        private static int rows = 8;
-        private static int cols = 16;
-        private static byte[,] nDevices = new byte[rows, cols];
-        public static I2cDetect _I2CDetect;
+        private static readonly int _rows = 8;
+        private static readonly int _cols = 16;
+        private static readonly byte[,] _nDevices = new byte[_rows, _cols];
+        private static I2cDetect _I2CDetect;
 
         static void Main(string[] args)
         {
@@ -45,12 +45,12 @@ namespace I2CDetect
             {
                 int r = i2c / 16;
                 int c = i2c % 16;                
-                nDevices[r, c] = 1;
+                _nDevices[r, c] = 1;
             }
             Console.WriteLine("     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f");
 
 
-            for (int i = 0; i < rows; i++)
+            for (int i = 0; i < _rows; i++)
             {
                 PrintRow(i);
             }
@@ -61,12 +61,12 @@ namespace I2CDetect
         static void PrintRow(int rowId)
         {
             string row = string.Format("{0:00}: ", rowId);
-            for (int i = 0; i < cols; i++)
+            for (int i = 0; i < _cols; i++)
             {
                 if ((rowId == 0 && i <3) || (rowId == 7 && i > 7))
                     row += "   ";
                 else
-                if (nDevices[rowId, i] == 0)
+                if (_nDevices[rowId, i] == 0)
                     row += string.Format("-- ");
                 else
                     row += string.Format("{0}{1:X} ", rowId, i);

@@ -71,8 +71,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Buses\I2CBus.cs" />
-    <Compile Include="Buses\I2CConnectorDriver.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -15,8 +15,8 @@ namespace BatteryGauge
 {
     public partial class FormBatteryGauge : Form
     {
-        LTC2943Service _LTC2943Service;
-        GpioConnection _gpioConnectionGlobalPin;
+        private LTC2943Service _LTC2943Service;
+        private GpioConnection _gpioConnectionGlobalPin;
         ConnectedPin _modemResetPin;
 
         public FormBatteryGauge()
@@ -24,7 +24,7 @@ namespace BatteryGauge
             //ushort d = 0x7fff;
             //byte[] byteArray = BitConverter.GetBytes(d).Reverse().ToArray();
 
-            var p = 0.34E-3;
+            //var p = 0.34E-3;
 
             InitializeComponent();
             _LTC2943Service = new LTC2943Service();

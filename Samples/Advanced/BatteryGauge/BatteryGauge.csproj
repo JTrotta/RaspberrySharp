@@ -56,8 +56,6 @@
       <DependentUpon>FormBatteryGauge.cs</DependentUpon>
     </Compile>
     <Compile Include="GPIO\GpioGlobalConnection.cs" />
-    <Compile Include="I2C\I2CBus.cs" />
-    <Compile Include="I2C\I2CConnectorDriver.cs" />
     <Compile Include="I2C\LTC2943Service.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,6 +90,10 @@
     <ProjectReference Include="..\..\..\RaspberrySharp\RaspberrySharp.csproj">
       <Project>{53955279-F0FD-4221-81B7-A201454CA4FF}</Project>
       <Name>RaspberrySharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\SampleCommon\SampleCommon.csproj">
+      <Project>{0739ff3a-ae57-491e-b0f8-3b06b53d1cfd}</Project>
+      <Name>SampleCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

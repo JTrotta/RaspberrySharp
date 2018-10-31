@@ -1,7 +1,7 @@
 ﻿// **************************************************************
 // Project     : RaspberrySharp
 // Filename    : Ds1307_I2C.cs
-// Guthub      : https://github.com/JTrotta/RaspberrySharp
+// Github      : https://github.com/JTrotta/RaspberrySharp
 // **************************************************************
 // Github Wiki : https://github.com/JTrotta/RaspberrySharp/wiki/DS1307---I2C---Clock
 // DataSheet   : http://www.alldatasheet.com/datasheet-pdf/pdf/58481/DALLAS/DS1307.html

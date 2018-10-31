@@ -25,8 +25,9 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
         private readonly IntPtr gpioAddress;
         private readonly IntPtr bscAddress;
 
-        private int currentDeviceAddress;
-        private int waitInterval;
+        private int _currentDeviceAddress;
+        private readonly bool _multimasterMode;
+        private int _waitInterval;
 
         #endregion
 
@@ -37,10 +38,12 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
         /// </summary>
         /// <param name="sdaPin">The SDA pin.</param>
         /// <param name="sclPin">The SCL pin.</param>
-        public I2cDriver(ProcessorPin sdaPin, ProcessorPin sclPin)
+        /// <param name="MultimasterMode">True if there are other master on the bus</param>
+        public I2cDriver(ProcessorPin sdaPin, ProcessorPin sclPin, bool MultimasterMode = false)
         {
             this.sdaPin = sdaPin;
             this.sclPin = sclPin;
+            this._multimasterMode = MultimasterMode;
 
             var bscBase = GetBscBase(sdaPin, sclPin);
 
@@ -79,10 +82,10 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
             // Read the clock divider register
             var dividerAddress = bscAddress + (int)OP.BCM2835_BSC_DIV;
             var divider = (ushort)SafeReadUInt32(dividerAddress);
-            waitInterval = GetWaitInterval(divider);
+            _waitInterval = GetWaitInterval(divider);
 
             var addressAddress = bscAddress + (int)OP.BCM2835_BSC_A;
-            SafeWriteUInt32(addressAddress, (uint)currentDeviceAddress);
+            SafeWriteUInt32(addressAddress, (uint)_currentDeviceAddress);
         }
 
         /// <summary>
@@ -127,7 +130,7 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
                 SafeWriteUInt32(dividerAddress, (uint)value);
 
                 var actualDivider = (ushort)SafeReadUInt32(dividerAddress);
-                waitInterval = GetWaitInterval(actualDivider);
+                _waitInterval = GetWaitInterval(actualDivider);
             }
         }
 
@@ -208,7 +211,7 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
                 SafeWriteUInt32(control, OP.BCM2835_BSC_C_I2CEN | OP.BCM2835_BSC_C_ST | OP.BCM2835_BSC_C_READ);
 
                 /* Wait for write to complete and first byte back. */
-                this.Wait((uint)waitInterval * ((uint)commands.Length + 1));
+                this.Wait((uint)_waitInterval * ((uint)commands.Length + 1));
 
                 /* wait for transfer to complete */
                 while ((ReadUInt32(status) & OP.BCM2835_BSC_S_DONE) == 0)
@@ -296,7 +299,7 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
                 WriteUInt32(control, OP.BCM2835_BSC_C_I2CEN | OP.BCM2835_BSC_C_ST | OP.BCM2835_BSC_C_READ);
 
                 /* Wait for write to complete and first byte back. */
-                uint wt = (uint)waitInterval * 3;
+                uint wt = (uint)_waitInterval * 3;
                 //Console.WriteLine(wt);
                 this.Wait(wt);
 
@@ -489,12 +492,17 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
         /// <param name="deviceAddress"></param>
         private void EnsureDeviceAddress(int deviceAddress)
         {
-            if (deviceAddress != currentDeviceAddress)
+            //This check must be removed in case the enviromet is a multimaster enviroment.
+            //An external master, concurrent with this master, may change the device address on bus, than this master,
+            //because of this check, will write/read another device.
+            //We add a Multimaster boolean configuration field, to avoid this.
+            //In multimastermode always set the device address
+            if ((deviceAddress != _currentDeviceAddress) || _multimasterMode)
             {
                 var addressAddress = bscAddress + (int)OP.BCM2835_BSC_A;
                 SafeWriteUInt32(addressAddress, (uint)deviceAddress);
 
-                currentDeviceAddress = deviceAddress;
+                _currentDeviceAddress = deviceAddress;
             }
         }
 
@@ -502,7 +510,7 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
         {
             // When remaining data is to be received, then wait for a fully FIFO
             if (remaining != 0)
-                Timer.Sleep(TimeSpan.FromMilliseconds(waitInterval * (remaining >= OP.BCM2835_BSC_FIFO_SIZE ? OP.BCM2835_BSC_FIFO_SIZE : remaining) / 1000d));
+                Timer.Sleep(TimeSpan.FromMilliseconds(_waitInterval * (remaining >= OP.BCM2835_BSC_FIFO_SIZE ? OP.BCM2835_BSC_FIFO_SIZE : remaining) / 1000d));
         }
 
         private static int GetWaitInterval(ushort actualDivider)

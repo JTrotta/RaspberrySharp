@@ -2,11 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
-namespace BatteryGauge.I2C
+namespace SampleCommon.Buses
 {
     /// <summary>
     /// Classe astratta ereditata da tutti i service I2C.
@@ -18,7 +16,7 @@ namespace BatteryGauge.I2C
         private I2cDeviceConnection _deviceConnection;
         private readonly int _deviceId;
         private Dictionary<TKey, int> _constants { get; set; }
-        internal CancellationTokenSource _cancellationTokenSource;
+        public CancellationTokenSource _cancellationTokenSource;
         #endregion
 
         #region Properties
@@ -31,7 +29,6 @@ namespace BatteryGauge.I2C
             _cancellationTokenSource = new CancellationTokenSource();
             this._deviceId = deviceId;
             _constants = new Dictionary<TKey, int>();
-            //_doWork = false;
 
             foreach (TKey element in Enum.GetValues(typeof(TKey)))
             {
@@ -49,7 +46,7 @@ namespace BatteryGauge.I2C
             _constants = null;
         }
 
-        internal virtual bool InitSensor()
+        public virtual bool InitSensor()
         {
             try
             {
@@ -72,8 +69,7 @@ namespace BatteryGauge.I2C
         }
         private string GetConstantAsString(TKey key)
         {
-            int value;
-            _constants.TryGetValue(key, out value);
+            _constants.TryGetValue(key, out int value);
             return "0x" + value.ToString("X").PadLeft(2, '0');
         }
         private string GetAsHexString(uint value)
@@ -98,7 +94,7 @@ namespace BatteryGauge.I2C
         /// Writes one byte to i2c bus
         /// </summary>
         /// <param name="data">The byte</param>
-        internal void WriteRegisterByte(byte data)
+        public void WriteRegisterByte(byte data)
         {
             try
             {
@@ -115,7 +111,7 @@ namespace BatteryGauge.I2C
         /// Write data array of bute to i2c bus
         /// </summary>
         /// <param name="data">the array of bytes</param>
-        internal void WriteRegisterByte(byte[] data)
+        public void WriteRegisterByte(byte[] data)
         {
             try
             {
@@ -132,9 +128,9 @@ namespace BatteryGauge.I2C
         /// </summary>
         /// <param name="register">The register</param>
         /// <param name="data">The integer value</param>
-        internal void WriteRegisterByte(TKey register, ushort data)
+        public void WriteRegisterByte(TKey register, ushort data)
         {
-           byte[] byteArray = BitConverter.GetBytes(data).ToArray();
+            byte[] byteArray = BitConverter.GetBytes(data).ToArray();
             this.WriteRegisterByte(register, byteArray);
         }
 
@@ -143,19 +139,9 @@ namespace BatteryGauge.I2C
         /// </summary>
         /// <param name="register">The register</param>
         /// <param name="data">The byte</param>
-        internal void WriteRegisterByte(TKey register, byte data)
+        public void WriteRegisterByte(TKey register, byte data)
         {
             WriteRegisterByte(register, new[] { data });
-
-            ////try
-            ////{
-            ////    if (_deviceConnection != null)
-            ////        _deviceConnection.Write(new[] { GetConstantAsByte(register), data });
-            ////}
-            ////catch (Exception e)
-            ////{
-            ////    CommonHelper.Log(LocalLogLevel.Error, e.Message);
-            ////}
         }
 
         /// <summary>
@@ -163,7 +149,7 @@ namespace BatteryGauge.I2C
         /// </summary>
         /// <param name="register">The register</param>
         /// <param name="data">The array of byte</param>
-        internal void WriteRegisterByte(TKey register, byte[] data)
+        public void WriteRegisterByte(TKey register, byte[] data)
         {
             if (_deviceConnection != null)
             {
@@ -188,7 +174,7 @@ namespace BatteryGauge.I2C
         /// </summary>
         /// <param name="register">The register</param>
         /// <returns>read value</returns>
-        internal byte ReadRegisterByte(TKey register, bool useRepeatedStart = false)
+        public byte ReadRegisterByte(TKey register, bool useRepeatedStart = false)
         {
             var result = ReadRegisterByte(register, 1, useRepeatedStart);
             return result != null ? result[0] : (byte)0x00;
@@ -201,7 +187,7 @@ namespace BatteryGauge.I2C
         /// <param name="length">Number of bytes to read</param>
         /// <param name="useRepeatedStart">Use or not I2C Repeated start condition</param>
         /// <returns></returns>
-        internal byte[] ReadRegisterByte(TKey register, int length, bool useRepeatedStart = false)
+        public byte[] ReadRegisterByte(TKey register, int length, bool useRepeatedStart = false)
         {
             try
             {
@@ -225,7 +211,6 @@ namespace BatteryGauge.I2C
             }
             catch (Exception e)
             {
-                //CommonHelper.Logger.Error(e, string.Format("Error ReadRegisterByte(TKey register, int length) {0} - {1}", register, e.Message));
                 return null;
             }
         }

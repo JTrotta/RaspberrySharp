@@ -1,4 +1,15 @@
-﻿using System;
+﻿// **************************************************************
+// Project     : I2cDetect
+// Filename    : I2cDetect.cs
+// Github      : https://github.com/JTrotta/RaspberrySharp
+// **************************************************************
+// Github Wiki : https://github.com/JTrotta/RaspberrySharp/wiki/I2cDetect---I2C
+// **************************************************************
+// Notes
+// **************************************************************
+
+
+using System;
 using RaspberrySharp.IO.GeneralPurpose;
 using System.Collections.Generic;
 
@@ -8,7 +19,6 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
     {
         private static I2cDriver _driver;
         private I2cDeviceConnection _deviceConnection;
-        //private int nDevices;
 
         public I2cDetect()
         {
@@ -21,7 +31,6 @@ namespace RaspberrySharp.IO.InterIntegratedCircuit
         {
             List<byte> nDevices = new List<byte>();
             for (byte address = 3; address < 120; address++)
-            //byte address = 0x62;
             {
                 _deviceConnection = _driver.Connect(address);
                 try
