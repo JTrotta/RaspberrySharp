@@ -22,7 +22,7 @@ The implementation is based on the work by Eric Bezine <http://www.raspberry-sha
 ## Supported frameworks
 
 * .NET Standard 2.0+
-* .NET Framework 4.5.2+ (x86, x64, AnyCPU)
+* .NET Framework 4.6.2+ (x86, x64, AnyCPU)
 * Mono 5.2+
 
 ## Supported Raspberry Pi versions
